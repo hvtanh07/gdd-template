@@ -889,10 +889,6 @@ function view(l){
     ent(t('Win and lose','Thắng và thua'),params([
       [t('Win','Thắng'),ph(`[The exact condition that completes the level.]`,`[Điều kiện chính xác để hoàn thành màn.]`)],
       [t('Lose','Thua'),ph(`[The exact condition that fails the level, before the revive offer.]`,`[Điều kiện chính xác để thua màn, trước khi hiện lựa chọn hồi sinh.]`)]
-    ]))+
-    ent(nm('Revive','Hồi sinh'),ul([
-      ph(`[Where the free booster from the revive is used in this game, for example on the biggest objects.]`,`[Công cụ miễn phí khi hồi sinh được dùng vào đâu trong game này, ví dụ lên các đối tượng lớn nhất.]`),
-      t(`The full revive rules (cost, free booster, limits) are in 1.3.`,`Quy tắc hồi sinh đầy đủ (giá, công cụ miễn phí, giới hạn) nằm ở mục 1.3.`)
     ]));
 
   B['main-game-mechanics']=
@@ -1082,23 +1078,23 @@ function view(l){
              `Sau màn cuối cùng, game tiếp tục bằng cách cho chơi lại các màn trước đó. Số màn vẫn tăng dần, nên người chơi không thấy game kết thúc.`))+
       tiles([
         ['40',t('Last level','Màn cuối cùng')],
-        ['20',t('Loop starts from','Bắt đầu lặp từ màn')],
-        ['21',t('Levels in each loop (20 to 40)','Số màn mỗi vòng lặp (20 tới 40)')]
+        ['21',t('Loop starts from','Bắt đầu lặp từ màn')],
+        ['20',t('Levels in each loop (21 to 40)','Số màn mỗi vòng lặp (21 tới 40)')]
       ])+
       panel(t('Level loop back logic','Cách lặp lại màn'),ol([
         t(`The player completes level 40, the last level.`,`Người chơi hoàn thành màn 40, màn cuối cùng.`),
-        t(`The next level shows as level 41 but plays the content of level 20.`,`Màn tiếp theo hiện là màn 41 nhưng chơi nội dung của màn 20.`),
-        t(`The player goes on through the content of levels 21, 22 … 40 (shown as 42, 43 … 61).`,`Người chơi tiếp tục với nội dung màn 21, 22 … 40 (hiện là 42, 43 … 61).`),
-        t(`After the content of level 40, it loops back to level 20 again (shown as 62), and so on.`,`Sau nội dung màn 40, game lại quay về màn 20 (hiện là 62), cứ thế lặp lại.`)
+        t(`The next level shows as level 41 but plays the content of level 21.`,`Màn tiếp theo hiện là màn 41 nhưng chơi nội dung của màn 21.`),
+        t(`The player goes on through the content of levels 22, 23 … 40 (shown as 42, 43 … 60).`,`Người chơi tiếp tục với nội dung màn 22, 23 … 40 (hiện là 42, 43 … 60).`),
+        t(`After the content of level 40, it loops back to level 21 again (shown as 61), and so on.`,`Sau nội dung màn 40, game lại quay về màn 21 (hiện là 61), cứ thế lặp lại.`)
       ]))+
       panel(t('Level mapping','Cách tính màn'),
         kv([
           [nm('Shown level','Màn hiển thị'),t(`The number the player sees. It always counts up: 41, 42, 43 …`,`Con số người chơi nhìn thấy. Luôn tăng dần: 41, 42, 43 …`)],
           [nm('Content level','Màn nội dung'),t(`The level that is actually loaded.`,`Màn thực sự được tải để chơi.`)+
-            `<span class="fx"><code>${t('content = 20 + (shown − 41) mod 21, for shown ≥ 41','nội dung = 20 + (hiển thị − 41) mod 21, khi hiển thị ≥ 41')}</code></span>`]
+            `<span class="fx"><code>${t('content = 21 + (shown − 41) mod 20, for shown ≥ 41','nội dung = 21 + (hiển thị − 41) mod 20, khi hiển thị ≥ 41')}</code></span>`]
         ])+
         table(t('Level loop back examples','Ví dụ lặp lại màn'),[t('Shown level','Màn hiển thị'),t('Content level','Màn nội dung')],
-          [['40','40'],['41','20'],['42','21'],['61','40'],['62','20']],'compact'))+
+          [['40','40'],['41','21'],['42','22'],['60','40'],['61','21']],'compact'))+
       panel(t('Rules','Quy tắc'),ul([
         t(`Every UI shows the shown level (HUD, Home, win and lose screens), never the content level.`,`Mọi giao diện đều hiện màn hiển thị (HUD, màn hình chính, màn hình thắng và thua), không bao giờ hiện màn nội dung.`),
         t(`Looped levels work like any other level: same coin reward, win screen bonus, hearts, revive and live ops.`,`Màn lặp lại hoạt động như mọi màn khác: cùng xu thưởng, thưởng thêm ở màn hình thắng, tim, hồi sinh và live ops.`),
@@ -1130,7 +1126,8 @@ function view(l){
       panel(t('What happens on revive','Khi hồi sinh'),ul([
         t(`The game continues from exactly where it stopped: same level, same board, progress kept. The level does not restart and no life is lost.`,
           `Game chơi tiếp đúng từ chỗ đang dừng: cùng màn, cùng bàn chơi, giữ nguyên tiến độ. Màn không bị chơi lại và không mất tim.`),
-        t(`A free ${P.bo3} is used at once to get the player unstuck.`,`Một ${P.bo3} miễn phí được dùng ngay để giúp người chơi thoát kẹt.`),
+        t(`A free ${P.bo3} is used at once to get the player unstuck.`,`Một ${P.bo3} miễn phí được dùng ngay để giúp người chơi thoát kẹt.`)+' '+
+          ph(`[Where it is used in this game, for example on the biggest objects.]`,`[Công cụ được dùng vào đâu trong game này, ví dụ lên các đối tượng lớn nhất.]`),
         t(`The free ${P.bo3} does not come from the player’s inventory, so their own count does not go down.`,`${P.bo3} miễn phí này không lấy từ kho của người chơi, nên số công cụ của họ không bị trừ.`),
         t(`The player does not need to own or have unlocked ${P.bo3} for the revive to use it.`,`Người chơi không cần sở hữu hay đã mở khóa ${P.bo3} thì hồi sinh vẫn dùng được.`),
         t(`The revive count and price reset when a new attempt starts (restart or next level).`,`Số lần hồi sinh và giá được tính lại khi bắt đầu lượt chơi mới (chơi lại hoặc qua màn).`)
@@ -1335,7 +1332,7 @@ function view(l){
     ])+
     rc(t('Level loop back','Lặp lại màn chơi'),[
       ['level_loop_last_level',t('Last level. After it, the game loops back.','Màn cuối cùng. Sau màn này, game quay lại lặp màn.'),'40',t('level','màn')],
-      ['level_loop_start_level',t('Level the loop starts from','Màn bắt đầu vòng lặp'),'20',t('level','màn')]
+      ['level_loop_start_level',t('Level the loop starts from','Màn bắt đầu vòng lặp'),'21',t('level','màn')]
     ])+
     rc(t('Lives','Mạng'),[
       ['lives_max',t('Maximum lives','Số mạng tối đa'),'5',lives],

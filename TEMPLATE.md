@@ -9,7 +9,7 @@ Mở file trong trình duyệt là xem được ngay. Mỗi placeholder hiện t
 | Mục | Loại | Khi làm game mới |
 |---|---|---|
 | Hero (tên game, câu giới thiệu, hình màn chơi A–E) | **Theo game** | Viết lại toàn bộ |
-| 1.1 Gameplay overview | **Theo game** | Cách chơi, thắng/thua, hồi sinh làm gì |
+| 1.1 Gameplay overview | **Theo game** | Cách chơi, thắng/thua |
 | 1.2 Main game mechanics | **Theo game** | Một `ent` cho mỗi đối tượng chính |
 | 1.3 Additional mechanics | Cố định | Giữ logic (tim và tim vô hạn, thanh mở khóa yếu tố, thưởng thêm ở màn hình thắng, RV Slot, lặp lại màn chơi, hồi sinh), chỉ đổi số. Đổi `GBASE` cho khớp `level_win_coin` |
 | 1.4 Elements | **Theo game** | Một `ent` cho mỗi yếu tố, cộng mục Fail-safe |
