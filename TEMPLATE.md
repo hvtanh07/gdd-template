@@ -28,19 +28,18 @@ Trong script, các chỗ cần sửa đều có ghi chú `/* PER GAME ... */`. C
 
 ## Các bước dựng GDD cho game mới
 
-1. Copy `gdd-template.html` sang repo hoặc thư mục của game mới, đặt tên `index.html`.
-2. Đặt tên game ở 3 chỗ:
+1. Đặt tên game ở 3 chỗ:
    - `const GAME='[Game name]'` (dùng cho hero và tiêu đề tab)
    - `<title>`
    - chữ `[Game name]` trong thanh bên (`.brand`)
-3. Đổi tên yếu tố và công cụ trong `N` và `P`, ở đầu hàm `view()`. Thêm hoặc bớt key cho đúng số lượng. Mọi mục 1.5, 1.6, 2.3, 2.4, 3.3, 3.4 và dòng thứ tự mở khóa đều đọc tên từ đây.
-4. Điền các mục **Theo game** theo bảng trên. Mỗi đoạn `ph('[…]','[…]')` thay bằng `t('English','Tiếng Việt')`.
-5. Kiểm tra lại các con số ở những mục cố định:
+2. Đổi tên yếu tố và công cụ trong `N` và `P`, ở đầu hàm `view()`. Thêm hoặc bớt key cho đúng số lượng. Mọi mục 1.5, 1.6, 2.3, 2.4, 3.3, 3.4 và dòng thứ tự mở khóa đều đọc tên từ đây.
+3. Điền các mục **Theo game** theo bảng trên. Mỗi đoạn `ph('[…]','[…]')` thay bằng `t('English','Tiếng Việt')`.
+4. Kiểm tra lại các con số ở những mục cố định:
    - giá trị remote config
    - level mở khóa ưu đãi (12 / 15 / 10)
    - giá và nội dung gói IAP
    - `GBASE`
-6. Thay các hình động. Template đã có sẵn hình động mẫu lấy từ Caps Sorting:
+5. Thay các hình động. Template đã có sẵn hình động mẫu lấy từ Caps Sorting:
    - **Hình màn chơi** ở đầu trang: băng chuyền chạy vòng, có nút dừng chuyển động, rê chuột vào chú thích A–E thì phần tương ứng được làm nổi bật. Muốn đổi, viết lại `fieldSVG()` theo màn chơi của game mới. Bọc mỗi phần trong `<g class="part part-A">` … `part-E`.
    - **Hình động cho yếu tố và công cụ** ở mục 1.5 và 1.6:
      - Yếu tố: `[Element 1]` đang dùng demo `lockedBox`, `[Element 2]` dùng `hidden`.
@@ -50,7 +49,7 @@ Trong script, các chỗ cần sửa đều có ghi chú `/* PER GAME ... */`. C
      - Muốn làm demo mới: thêm một mục vào `DEMOS` (thời lượng `D`, hàm `svg`, hàm `tracks`) và một chú thích vào `DCAP` cùng key.
      - Hình được vẽ bằng các hàm `mbox` (hộp), `dslots` (ô), `cdBadge` (con số đếm ngược), `padlock` (ổ khóa).
      - `tracks` là danh sách `[selector, thuộc tính CSS, [[giây, giá trị], …]]`. Bộ chạy demo tự lặp và tự dừng khi demo ra khỏi màn hình.
-7. Tìm các chỗ còn sót: trong file không còn `ph(` nào và không còn chữ `[` dạng placeholder.
+6. Tìm các chỗ còn sót: trong file không còn `ph(` nào và không còn chữ `[` dạng placeholder.
 
 ## Quy ước khi viết nội dung
 
