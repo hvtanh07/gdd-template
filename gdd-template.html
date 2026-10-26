@@ -1329,8 +1329,8 @@ function view(l){
       t(`Home, with countdown`,`Màn hình chính, kèm đồng hồ`),
       t(`During the 72 h`,`Trong 72 giờ`),see('starter-pack','6.5')],
     [nm('Remove Ads','Gỡ quảng cáo'),`IAP<br>${pid('remove_ads')}`,lvl(15),
-      t(`Level Complete with the 1st interstitial after level 15, then every 4 interstitials.`,`Level Complete có quảng cáo xen kẽ đầu tiên sau màn 15, sau đó mỗi 4 quảng cáo xen kẽ.`),
-      t(`Priority 2. Blocked: waits, counter stays at 0. Stops once bought.`,`Ưu tiên 2. Bị chặn: chờ hiện, bộ đếm giữ ở 0. Dừng khi đã mua.`),
+      t(`Level Complete with the 1st interstitial after level 15. Then every 4 interstitials (2nd–4th), every 8 (5th +).`,`Level Complete có quảng cáo xen kẽ đầu tiên sau màn 15. Sau đó mỗi 4 quảng cáo xen kẽ (lần 2–4), mỗi 8 (từ lần 5).`),
+      t(`Priority 2. 2nd–4th: 20 min cooldown or new session. 5th +: 2 a day. Blocked: waits, counter stays at 0. Stops once bought.`,`Ưu tiên 2. Lần 2–4: chờ 20 phút hoặc phiên mới. Từ lần 5: 2 lần/ngày. Bị chặn: chờ hiện, bộ đếm giữ ở 0. Dừng khi đã mua.`),
       t(`Home, after the 1st popup`,`Màn hình chính, sau popup đầu`),
       t(`Always, until bought`,`Luôn có, tới khi mua`),see('remove-ads','6.6')],
     [t('Rewarded-ad and coin popups','Popup quảng cáo có thưởng và xu')],
@@ -1363,7 +1363,7 @@ function view(l){
       `Mỗi lần Level Complete hiện tối đa một popup. Xét Starter Pack → Remove Ads → LTR và hiện popup đầu tiên đủ điều kiện. Popup bị chặn không mất lượt: chờ sang lần Level Complete tiếp theo.`)}</p>`+
     table(t('Popup priority','Thứ tự ưu tiên popup'),[t('Priority','Ưu tiên'),t('Popup','Popup'),t('Trigger','Trigger'),t('When blocked','Khi bị chặn')],[
       ['1',t('Starter Pack','Gói Khởi đầu'),t(`Level Complete of level 12 (once). Session start while the 72 h run.`,`Level Complete màn 12 (1 lần). Mở game khi còn 72 giờ.`),t('Never blocked','Không bị chặn')],
-      ['2',t('Remove Ads','Gỡ quảng cáo'),t(`Level Complete with an interstitial: 1st after level 15, then every 4.`,`Level Complete có quảng cáo xen kẽ: lần đầu sau màn 15, sau đó mỗi 4 lần.`),t('Waits. Shows at the next interstitial. Counter stays at 0.','Chờ hiện. Hiện ở quảng cáo xen kẽ tiếp theo. Bộ đếm giữ ở 0.')],
+      ['2',t('Remove Ads','Gỡ quảng cáo'),t(`Level Complete with an interstitial: 1st after level 15, then every 4 / 8 (see 6.6).`,`Level Complete có quảng cáo xen kẽ: lần đầu sau màn 15, sau đó mỗi 4 / 8 lần (xem 6.6).`),t('Waits. Shows at the next interstitial. Counter stays at 0.','Chờ hiện. Hiện ở quảng cáo xen kẽ tiếp theo. Bộ đếm giữ ở 0.')],
       ['3',t('Limited Time Reward','Quà giới hạn thời gian'),t(`1st Level Complete after the cooldown ends.`,`Level Complete đầu tiên sau khi hết cooldown.`),t('Waits for the next Level Complete. Timer does not run.','Dời sang Level Complete tiếp theo. Timer chưa chạy.')]
     ],'compact')+
     ul([
@@ -1409,10 +1409,11 @@ function view(l){
       lead(t(`Removes interstitial and banner ads forever. Rewarded ads stay.`,`Gỡ vĩnh viễn quảng cáo xen kẽ và banner. Quảng cáo có thưởng vẫn giữ.`))+
       tiles([[t('No ads','Không QC'),t('Interstitials and banners','Xen kẽ và banner')],['1,500',t('Gold','Vàng')],['1×',t('Each booster','Mỗi công cụ')],['$5.99',t('Price','Giá'),'hot']])+
       panel(t('Popup schedule','Lịch hiện popup'),
-        table(t('Remove Ads popup schedule','Lịch hiện popup Gỡ quảng cáo'),[t('Popup','Lần hiện'),t('Shows at','Hiện ở')],[
-          [t('1st','Lần 1'),t('Level Complete with the 1st interstitial after completing level 15','Level Complete có quảng cáo xen kẽ đầu tiên sau khi hoàn thành màn 15')],
-          [t('Next','Các lần sau'),t('Every 4 interstitials','Mỗi 4 quảng cáo xen kẽ')],
-          [t('Blocked by Starter Pack','Bị Starter Pack chặn'),t('Waits, counter stays at 0 and does not count up. Shows at the next interstitial. The 4-ad cycle restarts only after it really shows.','Chờ hiện, bộ đếm giữ ở 0 và không tăng. Hiện ở quảng cáo xen kẽ tiếp theo. Chu kỳ 4 quảng cáo chỉ đếm lại sau khi popup thực sự hiện.')]
+        table(t('Remove Ads popup schedule','Lịch hiện popup Gỡ quảng cáo'),[t('Popup shows','Lần hiện'),t('Trigger','Điều kiện'),t('Hard cap','Giới hạn')],[
+          [t('1st','Lần 1'),t('Level Complete with the 1st interstitial after level 15','Level Complete có quảng cáo xen kẽ đầu tiên sau màn 15'),t('Once','1 lần')],
+          [t('2nd–4th','Lần 2–4'),t('Every 4 interstitials','Mỗi 4 quảng cáo xen kẽ'),t('20 min cooldown after each popup, or until a new session','Chờ 20 phút sau mỗi lần hiện, hoặc tới phiên chơi mới')],
+          [t('5th +','Từ lần 5'),t('Every 8 interstitials','Mỗi 8 quảng cáo xen kẽ'),t('Max 2 a day, resets after 24 h','Tối đa 2 lần/ngày, tính lại sau 24 giờ')],
+          [t('Blocked by Starter Pack','Bị Starter Pack chặn'),t('Waits and shows at the next interstitial','Chờ hiện, hiện ở quảng cáo xen kẽ tiếp theo'),t('Counter stays at 0 and does not count up. The cycle restarts only after it really shows.','Bộ đếm giữ ở 0 và không tăng. Chu kỳ chỉ đếm lại sau khi popup thực sự hiện.')]
         ],'compact')+
         `<p>${t(`Priority 2: only Starter Pack can block it. The interstitial still plays right after the level, no need to go Home.`,`Ưu tiên 2: chỉ bị Starter Pack chặn. Quảng cáo xen kẽ vẫn hiện ngay sau khi hoàn thành màn, không cần về màn hình chính.`)}</p>`)+
       kv([
