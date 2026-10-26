@@ -1380,7 +1380,7 @@ function view(l){
         t(`Home screen and the HUD gold counter.`,`Màn hình chính và ô đếm vàng trên HUD.`),
         t(`Booster purchase screen, Revive popup, Heart refill screen, when the player doesn’t have enough coins.`,`Màn hình mua công cụ, popup Hồi sinh, màn hình nạp tim, khi người chơi không đủ xu.`),
         t(`Closing the store returns the player to the screen they came from.`,`Đóng cửa hàng sẽ quay về đúng màn hình trước đó.`)])],
-      [t('Visibility','Hiển thị'),t(`Starter Pack and Remove Ads: see their Store & Icon rules (6.3, 6.4). Others: always, buy any number of times.`,`Gói Khởi đầu và Gỡ quảng cáo: xem quy tắc Cửa hàng & Biểu tượng (mục 6.3, 6.4). Các gói khác: luôn có, mua nhiều lần.`)],
+      [t('Visibility','Hiển thị'),t(`Starter Pack and Remove Ads: see their Store & Icon rules (${see('starter-pack','6.3')}, ${see('remove-ads','6.4')}). Others: always, buy any number of times.`,`Gói Khởi đầu và Gỡ quảng cáo: xem quy tắc Cửa hàng & Biểu tượng (mục ${see('starter-pack','6.3')}, ${see('remove-ads','6.4')}). Các gói khác: luôn có, mua nhiều lần.`)],
       [t('Purchase OK','Mua thành công'),t(`Reward animation to the HUD, then update counters.`,`Hiệu ứng thưởng bay lên HUD, rồi cập nhật con số.`)],
       [t('Purchase fails','Mua lỗi'),t(`Show a notice popup. Nothing changes.`,`Hiện popup thông báo. Không thay đổi gì.`)]
     ]);
@@ -1443,6 +1443,7 @@ function view(l){
         ul([
           t(`1st cycle: Level Complete of level 10.`,`Chu kỳ đầu: Level Complete màn 10.`),
           t(`Once per cycle, so it never shows back to back.`,`1 lần mỗi chu kỳ, để không hiện liên tục.`),
+          t(`The 10 min timer only starts after the player sees the popup.`,`Timer 10 phút chỉ bắt đầu sau khi người chơi thấy popup.`),
           t(`Cooldown ended offline: shows when the player starts a new game session.`,`Cooldown hết khi offline: hiện khi người chơi mở phiên chơi mới.`),
           t(`Ad fails: no reward, timer keeps running.`,`Quảng cáo lỗi: không có quà, timer vẫn chạy.`)
         ]))+
