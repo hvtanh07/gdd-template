@@ -19,7 +19,7 @@ Mở file trong trình duyệt là xem được ngay. Mỗi placeholder hiện t
 | 3 Object set & animation | **Theo game** | Concept, bảng màu, chuyển động |
 | 4 SFX & haptics | Một phần | Giữ các dòng UI, thay dòng core/element/booster |
 | 5 Remote config | Cố định | Giữ mọi key, chỉ đổi giá trị |
-| 6 IAP & offers | Cố định | Giữ logic. Đổi `const PID='game.name'` thành tiền tố product ID của game (ví dụ `sushi.sort` → `sushi.sort.starter_pack`), đổi giá/số lượng nếu khác. 6.1 là danh sách gói, 6.2 là danh sách popup: thêm hoặc sửa gói, popup ở đây trước |
+| 6 IAP & offers | Cố định | Giữ logic. Đổi `const PID='game.name'` thành tiền tố product ID của game (ví dụ `sushi.sort` → `sushi.sort.starter_pack`), đổi giá/số lượng nếu khác. 6.1 là danh sách gói, 7.1 là danh sách popup: thêm hoặc sửa gói, popup ở đây trước |
 | 7 Live ops | Cố định | Giữ logic, chỉ đổi số |
 | 8 Change note | **Theo game** | Bắt đầu bằng một mục ngày tạo tài liệu |
 
